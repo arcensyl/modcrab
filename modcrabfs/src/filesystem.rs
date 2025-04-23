@@ -973,7 +973,7 @@ impl Drop for UnmanagedFile {
     fn drop(&mut self) {
         // Release control of the file descriptor so it is not closed.
         let file = self.inner.take().unwrap();
-        file.into_raw_fd();
+        let _ = file.into_raw_fd();
     }
 }
 
